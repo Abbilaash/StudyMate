@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Resume Generator{% endblock %}
+
+{% block content %}
+<html>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="color"] {
+            width: 50px;
+            padding: 0;
+            margin-bottom: 10px;
+            border: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+
+    <script>
+        // Function to dynamically add input fields for education and certifications
+        function addEntry(sectionId) {
+            var section = document.getElementById(sectionId);
+            var newEntry = document.createElement("div");
+            newEntry.innerHTML = `
+                <input type="text" name="${sectionId}-name" placeholder="Enter ${sectionId}" required>
+                <button type="button" onclick="removeEntry(this)">Remove</button>
+            `;
+            section.appendChild(newEntry);
+        }
+
+        // Function to remove the dynamically added input fields
+        function removeEntry(button) {
+            button.parentNode.remove();
+        }
+    </script>
+
+
+    <body>
+        <h1>Resume Generator</h1>
+        <form action="/resume-generator" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name"><br>
+            
+            <br><label for="about">About Me:</label>
+            <textarea id="about" name="about"></textarea><br>
+            
+            <div id="education">
+                <br><label>Educational Qualifications:</label>
+                <div>
+                    <input type="text" name="education-name" placeholder="Enter university name" required>
+                </div>
+            </div>
+            <button type="button" onclick="addEntry('education')">Add Education</button>
+
+            <div id="skills">
+                <br><label>Skills:</label>
+                <div>
+                    <input type="text" name="skills-name" placeholder="Enter your skills" required>
+                </div>
+            </div>
+            <button type="button" onclick="addEntry('skills')">Add Skills</button>
+
+            <div id="technologies">
+                <br><label>Technologies:</label>
+                <div>
+                    <input type="text" name="technologies-name" placeholder="Enter Technologies you worked with" required>
+                </div>
+            </div>
+            <button type="button" onclick="addEntry('technologies')">Add Technology</button>
+            
+            <div id="certifications">
+                <br><label>Certifications:</label>
+                <div>
+                    <input type="text" name="certifications-name" placeholder="Enter certification" required>
+                </div>
+            </div>
+            <button type="button" onclick="addEntry('certifications')">Add Certification</button><br>
+
+            <div id="projects">
+                <br><label>Projects:</label>
+                <div>
+                    <textarea type="text" name="projects-name" placeholder="Enter projects" required></textarea>
+                </div>
+            </div>
+            <button type="button" onclick="addEntry('projects')">Add Project</button><br>
+            
+            <br><label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone"><br>
+            
+            <br><label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+            
+            <br><label for="linkedin">LinkedIn Profile Link:</label>
+            <input type="url" id="linkedin" name="linkedin"><br>
+            
+            <br><label for="github">GitHub Profile Link:</label>
+            <input type="url" id="github" name="github"><br><br><br>
+            
+            <input type="submit" value="Generate Resume">
+        </form>
+    </body>
+
+
+
+
+
+</html>
+
+{% endblock %}
