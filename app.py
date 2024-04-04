@@ -1,21 +1,47 @@
-from flask import Flask,render_template,request,send_file
+from flask import Flask,render_template,request,send_file,jsonify,url_for,redirect
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+import func
 
 app = Flask(__name__)
 
+
+# adding all the required variables and universal instatiations
 sessions = {}
 sessions['username'] = "abbilaash"
 
+
+# start the routing part of the application
+# Route the utube chatbot page
+@app.route('/utube_chatbot',methods=['GET','POST'])
+def utube_chatbot():
+    if request.method == 'POST':
+        text = request.form.get('text')
+        print(utube_chatbot_text)
+        response = func.utube_chatbot(utube_chatbot_text,text)
+        return render_template('utube_chatbot.html',user_message=text, ai_response=response)
+    return render_template('utube_chatbot.html',response=utube_chatbot_text)
+
 # Route the main login page
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def index():
+    if request.method == 'POST':
+        global utube_chatbot_text
+        youtube_url = request.form['youtube_url']
+        pdf_file = request.files['pdf_file']
+        if youtube_url or pdf_file:
+            if youtube_url:
+                utube_chatbot_text = func.youtube_transcript(youtube_url)
+            else:
+                utube_chatbot_text = func.get_text_pdf(pdf_file)
+            return redirect(url_for('utube_chatbot'))
+        else:
+            return render_template('index.html')
     return render_template('index.html')
 
 
-# Route the resume generator page
-# This contains the youtube chatbot
+
 @app.route('/resume-generator',methods=['GET','POST'])
 def resume_generator():
     if request.method == 'POST':
@@ -31,7 +57,6 @@ def resume_generator():
         linkedin = request.form['linkedin']
         github = request.form['github']
 
-        
         resume_data = {
             "name":name,
             "about":about,
@@ -50,7 +75,6 @@ def resume_generator():
 
 
 
-
 # Route the para rater page
 @app.route('/para-rater')
 def para_rater():
@@ -62,11 +86,6 @@ def para_rater():
 def notes_maker():
     return render_template('notes-maker.html')
 
-
-# Route the profile page
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
 
 
 

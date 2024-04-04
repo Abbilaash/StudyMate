@@ -4,14 +4,11 @@ from youtube_transcript_api import YouTubeTranscriptApi as yta
 
 
 # initializing the needed API keys and models
-API_KEY = "API_KEY"
+API_KEY = "API_key"
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-pro')
 
 
-
-def get_text_youtube(url):
-    return 0
 
 def get_text_pdf(file):
     return 0

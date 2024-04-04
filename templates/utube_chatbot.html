@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Video chatBot{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with AI</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chat-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-box {
+        overflow-y: auto;
+        max-height: 300px;
+    }
+
+    .chat-message {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .chat-message-ai {
+        background-color: #e6f7ff;
+        text-align: left;
+    }
+
+    .chat-message-user {
+        background-color: #ffe6cc;
+        text-align: right;
+    }
+
+    .user-input-form {
+        margin-top: 20px;
+        display: flex;
+    }
+
+    #user-message {
+        flex: 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+</style>
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            {% if user_message %}
+            <div class="chat-message chat-message-user">
+                <p>{{ user_message }}</p>
+            </div>
+            {% endif %}
+            {% if ai_response %}
+            <div class="chat-message chat-message-ai">
+                <p>{{ ai_response }}</p>
+            </div>
+            {% endif %}
+        </div>
+        <form id="user-input-form" class="user-input-form" action="/utube_chatbot" method="post">
+            <input type="text" id="user-message" name="text" placeholder="Type your message here...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+{% endblock %}
