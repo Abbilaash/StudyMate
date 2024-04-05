@@ -1,7 +1,6 @@
 # importing needed libraries
 import google.generativeai as genai
 from youtube_transcript_api import YouTubeTranscriptApi as yta
-from dotenv import load_dotenv, dotenv_values 
 import os
 
 
