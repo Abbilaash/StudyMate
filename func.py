@@ -20,10 +20,13 @@ def get_text_pdf(file):
 chat = model.start_chat(history=[])
 def utube_chatbot(training_text,text):
     prompt = f"Here's the relevant information: {training_text}. Now, answer the question: {text}"
-    response = chat.send_message(prompt,stream=True)
     response_text = ""
-    for chunk in response:
-        response_text += chunk.text+" "
+    try:
+        response = chat.send_message(prompt,stream=True)
+        for chunk in response:
+            response_text += chunk.text+" "
+    except Exception as e:
+        response_text = 'Sorry, The given content you gave has some issues. Please try some other content.'
     return response_text
 
 

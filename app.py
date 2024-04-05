@@ -10,6 +10,7 @@ app = Flask(__name__)
 # adding all the required variables and universal instatiations
 sessions = {}
 sessions['username'] = "abbilaash"
+utube_chatbot_text = """"""
 
 
 # start the routing part of the application
@@ -18,7 +19,6 @@ sessions['username'] = "abbilaash"
 def utube_chatbot():
     if request.method == 'POST':
         text = request.form.get('text')
-        print(utube_chatbot_text)
         response = func.utube_chatbot(utube_chatbot_text,text)
         return render_template('utube_chatbot.html',user_message=text, ai_response=response)
     return render_template('utube_chatbot.html',response=utube_chatbot_text)
@@ -85,6 +85,17 @@ def para_rater():
 @app.route('/notes-maker')
 def notes_maker():
     return render_template('notes-maker.html')
+
+
+@app.route("/signup",methods=['GET','POST'])
+def signup():
+    return render_template('signup.html')
+
+
+@app.route("/login",methods=['GET','POST'])
+def login():
+    return render_template('login.html')
+
 
 
 
