@@ -3,3 +3,4 @@ Flask
 youtube_transcript_api
 python-dotenv
 google-generativeai
+hashlib

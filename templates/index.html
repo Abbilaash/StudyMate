@@ -17,14 +17,17 @@
             padding: 0;
         }
 
-        h1 {
-            text-align: center;
-        }
-
         .input-group {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
+        }
+        .welcome{
+            font-weight: bold;
+        }
+
+        h2,h5{
+            text-align: center;
         }
 
         .input-group label {
@@ -113,7 +116,9 @@
 </head>
 <body>
 
-<h1>YouTube Chatbot</h1>
+<h1 class="welcome">Welcome {{username}}</h1><br>
+<h2>ChatMate</h2>
+<h5>This bot will answer all your questions from the lecture video or from the pdf</h5><br>
 <form id="submit-form" action="#" method="post" enctype="multipart/form-data">
     <div class="input-group">
         <label for="youtube_url">YouTube URL:</label>
