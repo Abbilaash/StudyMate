@@ -47,7 +47,6 @@ def youtube_transcript(url):
     l = transcript.splitlines()
     final_tra = " ".join(l)
     return final_tra
-<<<<<<< HEAD
 
 def hashing(password):
     password_bytes = password.encode('utf-8')
@@ -72,5 +71,3 @@ def signup(username,gmail,password):
     
 #print(hashing("user@gmail.com"))
 #print(hashing("password"))
-=======
->>>>>>> cbc62696328a83fb039334143a22cc1e40f9772f
