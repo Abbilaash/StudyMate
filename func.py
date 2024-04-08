@@ -48,6 +48,7 @@ def youtube_transcript(url):
     final_tra = " ".join(l)
     return final_tra
 
+
 def hashing(password):
     password_bytes = password.encode('utf-8')
     hash_object = hashlib.sha256(password_bytes)
@@ -57,7 +58,7 @@ def verify_login(gmail,password):
     users_ref = db.collection('users')
     query = users_ref.where('gmail', '==', hashing(gmail)).where('password', '==', hashing(password)).limit(1).get()
     for doc in query:
-        return doc.get('username')  
+        return doc.get('username')
     else:
         return ""
     
@@ -68,6 +69,21 @@ def signup(username,gmail,password):
         'gmail': hashing(gmail),
         'password': hashing(password)
     })
-    
-#print(hashing("user@gmail.com"))
-#print(hashing("password"))
+
+def generate_notes(preferences,transcript):
+    prompt = f"Generate notes from the following transcript: {transcript} with few prefenreces like {preferences}. The should not contain the preferences but should be generated according to them"
+    response_text = ""
+    response = chat.send_message(prompt,stream=True)
+    for chunk in response:
+        response_text += chunk.text+" "
+    notes_text = response.text
+    sections = notes_text.split("\n\n")
+    parsed_notes = {}
+    for section in sections:
+        lines = section.split("\n")
+        heading = lines[0][2:-2]
+        content = lines[1:]
+        parsed_notes[heading] = content
+    return parsed_notes
+
+

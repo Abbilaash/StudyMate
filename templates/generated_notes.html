@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<script>
+    // Open the current page in a new tab
+    window.onload = function() {
+        window.open('', '_blank');
+        window.focus();
+    };
+</script> 
+<body>
+    <div class="container mt-5">
+        {% for section, content in parsed_notes.items() %}
+        {% if content %}
+        <div class="card mb-4">
+            <div class="card-header">{{ section }}</div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% for item in content %}
+                    <li class="list-group-item">{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
