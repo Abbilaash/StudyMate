@@ -1,6 +1,5 @@
 # importing needed libraries
 import google.generativeai as genai
-import tika.parser
 from youtube_transcript_api import YouTubeTranscriptApi as yta
 import os
 import hashlib
@@ -8,7 +7,6 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from nltk.tokenize import word_tokenize
 from nltk.corpus import words
-import nltk
 import PyPDF2
 import io
 
