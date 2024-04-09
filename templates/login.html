@@ -1,22 +1,21 @@
 <div class="form-structor">
-    <form action="/signup" method="post">
-        <div class="signup">
-            <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
-            <div class="form-holder">
-                <input type="text" class="input" placeholder="Name" />
-                <input type="email" class="input" placeholder="Email" />
-                <input type="password" class="input" placeholder="Password" />
-            </div>
-            <button class="submit-btn">Sign up</button>
+    <div class="signup">
+        <h1 class="form-title" id="🎓STUDYMATE"><span></span>🎓STUDYMATE</h1>
+        <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
+        <div class="form-holder">
+            <input type="text" class="input" placeholder="Name" />
+            <input type="email" class="input" placeholder="Email" />
+            <input type="password" class="input" placeholder="Password" />
         </div>
-    </form>
+        <button class="submit-btn">Sign up</button>
+    </div>
     <form action="/" method="post">
         <div class="login slide-up">
             <div class="center">
                 <h2 class="form-title" id="login"><span>or</span>Log in</h2>
                 <div class="form-holder">
-                    <input name="gmail" type="email" class="input" placeholder="Email" />
-                    <input name="password" type="password" class="input" placeholder="Password" />
+                    <input name='email' type="email" class="input" placeholder="Email" />
+                    <input name='password' type="password" class="input" placeholder="Password" />
                 </div>
                 <button class="submit-btn">Log in</button>
             </div>
@@ -29,9 +28,12 @@
 
     html,
     body {
+        background-image: url('https://img.freepik.com/free-vector/realistic-style-technology-particle-background_23-2148426704.jpg');
+        background-repeat: no - repeat;
+        background-size: cover;
         position: relative;
         min-height: 100vh;
-        background-color: #E1E8EE;
+        background-color: #6994ba;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -41,7 +43,7 @@
     }
 
     .form-structor {
-        background-color: #222;
+        background-color:rgb(44, 6, 106);
         border-radius: 15px;
         height: 550px;
         width: 350px;
@@ -59,9 +61,9 @@
             background-repeat: no-repeat;
             background-position: left bottom;
             background-size: 500px;
-            background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf884ad570b50659c5fa2dc2cfb20ecf&auto=format&fit=crop&w=1000&q=100');
+            background-color:rgb(90, 4, 147)
         }
-
+        
         .signup {
             position: absolute;
             top: 50%;
@@ -141,7 +143,7 @@
             }
 
             .submit-btn {
-                background-color: rgba(0, 0, 0, 0.4);
+                background-color :rgb(180, 7, 183);
                 color: rgba(256, 256, 256, 0.7);
                 border: 0;
                 border-radius: 15px;
@@ -158,18 +160,18 @@
 
                 &:hover {
                     transition: all .3s ease;
-                    background-color: rgba(0, 0, 0, 0.8);
+                    background-color:#f021b5;
                 }
             }
         }
 
         .login {
             position: absolute;
-            top: 20%;
+            top: 45%;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #fff;
+            background-color:rgb(90, 4, 147);
             z-index: 5;
             -webkit-transition: all .3s ease;
 
@@ -179,7 +181,7 @@
                 left: 50%;
                 top: -20px;
                 -webkit-transform: translate(-50%, 0);
-                background-color: #fff;
+                background-color:#fff;
                 width: 200%;
                 height: 250px;
                 border-radius: 50%;
@@ -214,7 +216,7 @@
                     background-color: #fff;
                     border: 1px solid #eee;
                     overflow: hidden;
-                    margin-top: 50px;
+                    margin-top: 30px;
                     opacity: 1;
                     visibility: visible;
                     -webkit-transition: all .3s ease;
@@ -236,13 +238,13 @@
                         }
 
                         &::-webkit-input-placeholder {
-                            color: rgba(0, 0, 0, 0.4);
+                            color: rgba(90 ,4, 147);
                         }
                     }
                 }
 
                 .submit-btn {
-                    background-color: #6B92A4;
+                    background-color:rgb(180, 7, 183);
                     color: rgba(256, 256, 256, 0.7);
                     border: 0;
                     border-radius: 15px;
@@ -259,7 +261,7 @@
 
                     &:hover {
                         transition: all .3s ease;
-                        background-color: rgba(0, 0, 0, 0.8);
+                        background-color:#f021b5;
                     }
                 }
             }

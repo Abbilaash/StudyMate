@@ -2,7 +2,12 @@ from flask import Flask,render_template,request,send_file,jsonify,url_for,redire
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-import func
+import func,nltk
+import PyPDF2
+
+nltk.download('punkt')
+nltk.download('words')
+
 
 app = Flask(__name__)
 app.secret_key = 'hg5YV4gtfs67vttsbVF'
@@ -25,7 +30,11 @@ def index():
                 if youtube_url:
                     utube_chatbot_text = func.youtube_transcript(youtube_url)
                 else:
-                    utube_chatbot_text = func.get_text_pdf(pdf_file)
+                    reader = PyPDF2.PdfReader(pdf_file)
+                    number_of_pages = len(reader.pages)
+                    page = reader.pages[0]
+                    text = page.extract_text()
+                    utube_chatbot_text = text
                 return redirect(url_for('utube_chatbot'))
             else:
                 return render_template('index.html')
@@ -82,11 +91,33 @@ def resume_generator():
         return redirect(url_for('login'))
 
 
-
 # Route the para rater page
-@app.route('/para-rater')
+@app.route('/para-rater',methods=['GET','POST'])
 def para_rater():
+    if request.method == 'POST':
+        paragraph = request.form['paragraph']
+        #p = func.highlight_spelling_error(paragraph)
+        p = func.check_for_errors(paragraph)
+        try:
+            func.add_para_to_db(paragraph,session['email'])
+        except:
+            pass
+        suggestion = func.write_rater(paragraph,session['email'])
+        return redirect(url_for('para_rater_result', paragraph=p,suggestion=suggestion))
     return render_template('para-rater.html')
+
+@app.route('/para-rater-result', methods=['GET'])
+def para_rater_result():
+    paragraph = request.args.get('paragraph', '')
+    suggestion = request.args.get('suggestion', '')
+    return render_template('para-rater.html', paragraph=paragraph,suggestion=suggestion)
+
+
+
+
+
+
+
 
 
 # Route the notes maker page
@@ -106,9 +137,6 @@ def notes_maker():
         return redirect(url_for('login'))
 
 
-
-
-
 @app.route("/signup",methods=['GET','POST'])
 def signup():
     if request.method == 'POST':
@@ -122,7 +150,7 @@ def signup():
 @app.route("/",methods=['GET','POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['gmail']
+        email = request.form['email']
         password = request.form['password']
         temp = func.verify_login(email,password)
         if temp != "":

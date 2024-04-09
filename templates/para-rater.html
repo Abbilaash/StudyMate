@@ -5,8 +5,69 @@
 {% block content %}
 
 
-<h1>Para Rater</h1>
-<!-- Your paragraph rater content here -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paragraph Rater</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+
+            height: 100vh;
+        }
+        .left-column{
+            height: 550px;
+            flex: 1;
+            padding: 20px;
+        } 
+        .right-column {
+            flex: 1;
+            padding: 20px;
+        }
+        .chat-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 10px;
+        }
+        .chat-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <form id="paragraphForm" action="/para-rater" method="post">
+                <textarea id="paragraphInput" name="paragraph" rows="10" cols="50" placeholder="Enter your paragraph here..."></textarea><br>
+                <input type="submit" value="Submit" class="chat-button">
+            </form>
+        </div>
+        <div class="right-column">
+            {% if paragraph %}
+                <h2>Spell error highlights:</h2>
+                <p>{{ paragraph }}</p>
+            {% endif %}
+        </div>
+        <div class="right-column">
+            {% if suggestion %}
+                <h2>Suggestions:</h2>
+                <p>{{ suggestion }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+
 
 
 
