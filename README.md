@@ -5,10 +5,10 @@ Welcome to StudyMate, an AI Education Companion, a multifaceted platform tailore
 
 First clone the repository
 ```
-git clone https://github.com/Abbilaash/SRM-Hackathon-8.0.git
+git clone https://github.com/Abbilaash/StudyMate.git
 ```
 ```
-cd SRM-Hackathon-8.0
+cd StudyMate
 ```
 Install all the required libraries
 ```
