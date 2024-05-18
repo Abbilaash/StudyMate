@@ -18,3 +18,13 @@ Run the project with python3
 ```
 python app.py
 ```
+
+![Screenshot 2024-05-18 221906](https://github.com/Abbilaash/StudyMate/assets/78356376/606e8699-b0e4-492d-8204-02fccd6bf399)
+![Screenshot 2024-05-18 222601](https://github.com/Abbilaash/StudyMate/assets/78356376/6f87b012-170d-4797-a1e8-81650fd3fab2)
+![Screenshot 2024-05-18 222545](https://github.com/Abbilaash/StudyMate/assets/78356376/bbece1fe-8330-4a0f-9874-812c2ff6f993)
+![Screenshot 2024-05-18 222620](https://github.com/Abbilaash/StudyMate/assets/78356376/10eb73dc-e657-4164-baaf-ab05f704e71c)
+![Screenshot 2024-05-18 222638](https://github.com/Abbilaash/StudyMate/assets/78356376/316f2b7c-3593-4232-9ab2-d4032e1b6762)
+![Screenshot 2024-05-18 222734](https://github.com/Abbilaash/StudyMate/assets/78356376/912c3f5e-f4c1-4308-a6c3-cce4bc32c9ae)
+
+
+
